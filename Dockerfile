@@ -1,4 +1,4 @@
-FROM browserless/chrome:latest
+FROM browserless/chromium:latest
 
 # Set environment variables
 ENV MAX_CONCURRENT_SESSIONS=100
