@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  browserless:
+    image: browserless/chrome:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - MAX_CONCURRENT_SESSIONS=10
+      - CONNECTION_TIMEOUT=60000
+      - MAX_QUEUE_LENGTH=20
+      - PREBOOT_CHROME=true
+      - DEBUG=browserless*
+      - DISABLE_AUTO_SET_DOWNLOAD_BEHAVIOR=true
+      - FUNCTION_ENABLE_INCOGNITO=true
+      - ENABLE_CORS=true
+      - CHROME_REFRESH_TIME=3600000
+      - CHROME_FLAGS=--disable-dev-shm-usage,--no-sandbox,--disable-setuid-sandbox,--disable-gpu,--disable-software-rasterizer,--disable-features=VizDisplayCompositor
+    restart: unless-stopped
+    shm_size: '1gb'
+    # Add these security-related options
+    security_opt:
+      - seccomp=unconfined
+    volumes:
+      - /tmp:/tmp
