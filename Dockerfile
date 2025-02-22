@@ -1,4 +1,4 @@
-FROM browserless/chromium:latest
+FROM ghcr.io/browserless/chromium
 
 # Set environment variables
 ENV MAX_CONCURRENT_SESSIONS=100
